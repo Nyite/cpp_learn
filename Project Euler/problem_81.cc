@@ -3,12 +3,12 @@
 #include <vector>
 #include <string>
 
-#define ROW_NUM 80
-#define COL_NUM 80
+const int Row_num = 80;
+const int Col_num = 80;
 
 long sum = INT_MAX;
-int matrix[ROW_NUM][COL_NUM];
-int sub_sum_matrix[ROW_NUM][COL_NUM];
+int matrix[Row_num][Col_num];
+int sub_sum_matrix[Row_num][Col_num];
 
 void print_matrix();
 bool try_parse_matrix(const char* _Filename);
@@ -22,30 +22,30 @@ void move(long current_sum, int i, int j) {
     if (current_sum > sum)
         return;
 
-    if (i + 1 < ROW_NUM)
+    if (i + 1 < Row_num)
         move(current_sum, i + 1, j);
 
-    if (j + 1 < COL_NUM)
+    if (j + 1 < Col_num)
         move(current_sum, i, j + 1);
 
-    if (i + 1 == ROW_NUM && j + 1 == COL_NUM && current_sum < sum)
+    if (i + 1 == Row_num && j + 1 == Col_num && current_sum < sum)
         sum = current_sum;
 }
 
 void solve() {
     //move(0, 0, 0);
 
-    sub_sum_matrix[ROW_NUM - 1][COL_NUM - 1] = matrix[ROW_NUM - 1][COL_NUM - 1];
-    for (int j = COL_NUM - 2; j >= 0; j--) {
-        sub_sum_matrix[ROW_NUM - 1][j] = sub_sum_matrix[ROW_NUM - 1][j + 1] + matrix[ROW_NUM - 1][j];
+    sub_sum_matrix[Row_num - 1][Col_num - 1] = matrix[Row_num - 1][Col_num - 1];
+    for (int j = Col_num - 2; j >= 0; j--) {
+        sub_sum_matrix[Row_num - 1][j] = sub_sum_matrix[Row_num - 1][j + 1] + matrix[Row_num - 1][j];
     }
 
-    for (int i = ROW_NUM - 2; i >= 0; i--) {
-        sub_sum_matrix[i][COL_NUM - 1] = sub_sum_matrix[i + 1][COL_NUM - 1] + matrix[i][COL_NUM - 1];
+    for (int i = Row_num - 2; i >= 0; i--) {
+        sub_sum_matrix[i][Col_num - 1] = sub_sum_matrix[i + 1][Col_num - 1] + matrix[i][Col_num - 1];
     }
 
-    for (int i = ROW_NUM - 2; i >= 0; i--) {
-        for (int j = COL_NUM - 2; j >= 0; j--) {
+    for (int i = Row_num - 2; i >= 0; i--) {
+        for (int j = Col_num - 2; j >= 0; j--) {
             sub_sum_matrix[i][j] = std::min(sub_sum_matrix[i + 1][j], sub_sum_matrix[i][j + 1]) + matrix[i][j];
         }
     }
@@ -95,8 +95,8 @@ bool try_parse_matrix(const char* _Filename) {
 }
 
 void print_matrix() {
-    for (int i = 0; i < ROW_NUM; i++) {
-        for (int j = 0; j < COL_NUM; j++) {
+    for (int i = 0; i < Row_num; i++) {
+        for (int j = 0; j < Col_num; j++) {
             std::cout << sub_sum_matrix[i][j] << "\t";
         }
         std::cout << std::endl;
