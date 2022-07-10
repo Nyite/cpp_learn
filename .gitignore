@@ -1,3 +1,5 @@
 *.djvu
 .DS_Store
 /TestApp
+*.out
+*.o
