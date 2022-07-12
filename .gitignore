@@ -1,5 +1,7 @@
 *.djvu
 .DS_Store
+.vscode/
 /TestApp
+*.exe
 *.out
 *.o
