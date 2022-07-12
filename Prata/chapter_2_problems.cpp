@@ -11,10 +11,10 @@ void task_4();
 double celc2farh(int);
 void task_5();
 
-double ly2astra(double lightyears);
+double ly2astra(double);
 void task_6();
 
-void print_time(int hours, int minutes);
+void print_time(int, int);
 void task_7();
 
 int main()
