@@ -9,8 +9,8 @@ Some `iostream` API:
 - `cin.get(void)` returns an ASCII code for a `char` it have red, but EOF (-1) if if reads `<EOF>` or `<Ctrl+Z><Enter>`. In some OS default `char` type can be `unsigned` and `(ch = cin.get()) != EOF` will always be true. So you need to specify `ch` as `signed char`.
 - `cout.put()` puts a charecter in output stream.
 - `cout.setf()` sets formating for float-point numbers.
-  - `fixed` set fixed precision.
-  - `floatfiled` set precision to 6th decimal place.
+  - `ios::fixed` set fixed precision.
+  - `ios_base::floatfiled` set precision to 6th decimal place.
   - `ios::boolalpha` enables printing bool values as `true` and `flase` instead of `1` and `0`.
 - `hex` & `oct` manipulators determine the output format of an integer typed value.
 
